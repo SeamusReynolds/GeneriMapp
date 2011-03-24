@@ -1,1 +1,11 @@
-Wooo! Our first README
+To Compile/Run code:
+  -Follow instructions on how to copy the repo to your computer
+  -Open eclipse
+  -New->Project
+  -Select Android Application
+  -In the create app window, pick 'create project from existing source'
+  -It'll ask you for the project directory, pick the root folder (GeneriMapp)
+  -It fills in all the other stuff, click create
+  -????
+  -PROFIT!
+  
