@@ -1,57 +1,54 @@
 package com.luke.example.generimapp;
 
-import java.util.List;
-
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapController;
-import com.google.android.maps.MapView;
-import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
-
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class GeneriMapp extends MapActivity {
-    /** Called when the activity is first created. */
-	MapController mc;
+public class GeneriMapp extends Activity{
 	
-	@Override
-	protected boolean isRouteDisplayed() {
-	    return false;
-	}
+	String url;
+	EditText edittextN;
+	EditText edittextS;
+	EditText edittextE;
+	EditText edittextW;
+	
+	private class ButtonHandler implements View.OnClickListener
+    {
+		public void onClick(View v)
+		{
+			handleButtonClick();
+		}	
+    }
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.main);
-	    MapView mapView = (MapView) findViewById(R.id.mapView);
-	    mapView.setBuiltInZoomControls(true);
-	    
-	    mc = mapView.getController();
-	    
-	    List<Overlay> mapOverlays = mapView.getOverlays();
-	    Drawable drawable = this.getResources().getDrawable(R.drawable.rock);
-	    GeneriMappItemizedOverlay itemizedoverlay = new GeneriMappItemizedOverlay(drawable, mapView.getContext());
-	    
-	    XMLReader xr = new XMLReader();
-	    xr.parseURL("http://metpetdb.rpi.edu/metpetweb/searchIPhone.svc?north=42.449964&south=41.550036&east=-72.394514&west=-73.605486");
-	    
-	    GeoPoint point;
-	    OverlayItem overlayitem;
-	    for(int i = 0; i < xr.size(); i++){
-	    	point = new GeoPoint((int)(xr.getX(i) * 1E6),(int)(xr.getY(i) * 1E6));
-	    	overlayitem = new OverlayItem(point, Integer.toString(xr.getID(i)), Double.toString(xr.getX(i)) + ", " + Double.toString(xr.getY(i)));
-	    	itemizedoverlay.addOverlay(overlayitem);
-	    }
-	    
-	    //(int)(xr.getAvgX() * 1E6),(int)(xr.getAvgY() * 1E6)
-	    GeoPoint avgpoint = new GeoPoint((int)(xr.getAvgX() * 1E6),(int)(xr.getAvgY() * 1E6));
-	    mc.animateTo(avgpoint);
-	    mc.setZoom(11);
-	    mapOverlays.add(itemizedoverlay);
-	    
-	    
-	    
+		super.onCreate(savedInstanceState);
+	    setContentView(R.layout.inputlayout);
+	    final Button submit = (Button) findViewById(R.id.button);
+	    submit.setOnClickListener(new ButtonHandler());
+	    edittextN = (EditText) findViewById(R.id.entryN);
+	    edittextS = (EditText) findViewById(R.id.entryS);
+	    edittextE = (EditText) findViewById(R.id.entryE);
+	    edittextW = (EditText) findViewById(R.id.entryW);
+	    edittextN.setText("42.449964");
+	    edittextS.setText("41.550036");
+	    edittextE.setText("-72.104514");
+	    edittextW.setText("-73.605486");
 	}
+	
+	private void handleButtonClick()
+    {
+		url = "http://metpetdb.rpi.edu/metpetweb/searchIPhone.svc?north="
+			+ edittextN.getText() + "&south="
+			+ edittextS.getText() + "&east="
+			+ edittextE.getText() + "&west="
+			+ edittextW.getText();
+		//url = "";
+		Intent intent = new Intent(getBaseContext(), MapPlot.class);
+		intent.putExtra("PARSE_URL", url);
+		startActivity(intent);
+    }
 }

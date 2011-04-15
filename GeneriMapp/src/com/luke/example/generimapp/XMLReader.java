@@ -30,6 +30,7 @@ public class XMLReader {
 	
 	private ArrayList<rock> rocks = new ArrayList<rock>();
 	private double avgX, avgY;
+	private double spanX, spanY;
 	
 	public XMLReader(){
 		
@@ -51,7 +52,7 @@ public class XMLReader {
 			 * doc.getElementsByTagName("long");
 			 */
 			
-			double sumX = 0, sumY = 0;
+			double maxX = -360.0, minX = 360.0, maxY = -360.0, minY = 360.0;
 
 			for (int s = 0; s < nodeLst.getLength(); s++) {
 
@@ -81,15 +82,19 @@ public class XMLReader {
 				// " X: " +
 				// x.item(0).getNodeValue() + " Y: " +
 				// y.item(0).getNodeValue());
-				rocks.add(new rock(Integer.parseInt(lstID.item(0).getNodeValue().trim()),
-						Double.parseDouble(x.item(0).getNodeValue().trim()), 
-						Double.parseDouble(y.item(0).getNodeValue().trim())));
-				sumX += Double.parseDouble(x.item(0).getNodeValue().trim());
-				sumY += Double.parseDouble(y.item(0).getNodeValue().trim());
+				double xent = Double.parseDouble(x.item(0).getNodeValue().trim());
+				double yent = Double.parseDouble(y.item(0).getNodeValue().trim());
+				rocks.add(new rock(Integer.parseInt(lstID.item(0).getNodeValue().trim()), xent, yent));
+				if(xent > maxX) maxX = xent;
+				if(xent < minX) minX = xent;
+				if(yent > maxY) maxY = yent;
+				if(yent < minY) minY = yent;
 
 			}
-			avgX = sumX / (double)rocks.size();
-			avgY = sumY / (double)rocks.size();
+			spanX = maxX-minX;
+			spanY = maxY-minY;
+			avgX = (maxX+minX)/2.0;
+			avgY = (maxY+minY)/2.0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -108,5 +113,11 @@ public class XMLReader {
 	}
 	public double getAvgY(){
 		return avgY;
+	}
+	public double getSpanX(){
+		return spanX;
+	}
+	public double getSpanY(){
+		return spanY;
 	}
 }

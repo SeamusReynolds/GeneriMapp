@@ -16,10 +16,20 @@ public final class R {
         public static final int rock=0x7f020002;
     }
     public static final class id {
-        public static final int mapView=0x7f050000;
+        public static final int button=0x7f050008;
+        public static final int entryE=0x7f050005;
+        public static final int entryN=0x7f050001;
+        public static final int entryS=0x7f050003;
+        public static final int entryW=0x7f050007;
+        public static final int labelE=0x7f050004;
+        public static final int labelN=0x7f050000;
+        public static final int labelS=0x7f050002;
+        public static final int labelW=0x7f050006;
+        public static final int mapView=0x7f050009;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
+        public static final int inputlayout=0x7f030000;
+        public static final int maplayout=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
