@@ -20,7 +20,6 @@ public class GeneriMapp extends Activity{
 	LocationListener locationListener;
 	AlertDialog.Builder builder;
 	AlertDialog radpick;
-	int radius;
 	
 	private class ButtonHandler implements View.OnClickListener
     {
@@ -29,10 +28,13 @@ public class GeneriMapp extends Activity{
 			switch(v.getId()){
 			case R.id.mylocb:
 				handleMyLoc();
+				break;
 			case R.id.maplocb:
 				handleMapLoc();
+				break;
 			case R.id.rawlocb:
 				handleRawLoc();
+				break;
 			}
 		}	
     }
@@ -65,14 +67,16 @@ public class GeneriMapp extends Activity{
 	    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 	    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 	    
-	    final CharSequence[] radii = {"20", "50", "100", "150", "200", "300", "400"};
+	    final CharSequence[] radii = {"20", "50", "100", "150", "200", "300", "400", "500", "1000"};
 	    
 	    //set up the radius picker
 	    builder = new AlertDialog.Builder(this);
 	    builder.setTitle("Pick a radius");
+	    builder.setCancelable(false);
 	    builder.setItems(radii, new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int item) {
-	            radius = Integer.parseInt(radii[item].toString());
+	            int radius = Integer.parseInt(radii[item].toString());
+	            plotmyloc(radius);
 	        }
 	    });
 	    
@@ -81,9 +85,11 @@ public class GeneriMapp extends Activity{
 	    final Button mylb = (Button) findViewById(R.id.mylocb);
 	    final Button maplb = (Button) findViewById(R.id.maplocb);
 	    final Button rawlb = (Button) findViewById(R.id.rawlocb);
-	    mylb.setOnClickListener(new ButtonHandler());
-	    maplb.setOnClickListener(new ButtonHandler());
-	    rawlb.setOnClickListener(new ButtonHandler());
+	    
+	    ButtonHandler mybh = new ButtonHandler();
+	    mylb.setOnClickListener(mybh);
+	    maplb.setOnClickListener(mybh);
+	    rawlb.setOnClickListener(mybh);
 	}
 	
 	private void updateLocation(Location l){
@@ -94,16 +100,18 @@ public class GeneriMapp extends Activity{
 	private void handleMyLoc(){
 		locationManager.removeUpdates(locationListener);
 		radpick.show();
+	}
+	private void plotmyloc(int radius){
 		double north = (latitude + ((double)radius * 0.0145)),
-				south = (latitude - ((double)radius * 0.0145)),
-				east = (longitude + ((double)radius * 0.0145)),
-				west = (longitude - ((double)radius * 0.0145));
+		south = (latitude - ((double)radius * 0.0145)),
+		east = (longitude + ((double)radius * 0.0145)),
+		west = (longitude - ((double)radius * 0.0145));
 		String url = "http://metpetdb.rpi.edu/metpetweb/searchIPhone.svc?north="
 			+ Double.toString(north) + "&south="
 			+ Double.toString(south) + "&east="
 			+ Double.toString(east) + "&west="
 			+ Double.toString(west);
-		Intent intent = new Intent(getBaseContext(), MapPlot.class);
+		Intent intent = new Intent(this, MapPlot.class);
 		intent.putExtra("PARSE_URL", url);
 		startActivity(intent);
 	}

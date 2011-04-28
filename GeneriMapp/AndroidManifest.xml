@@ -17,13 +17,13 @@
             </intent-filter>
     	</activity>
     	
-    	<activity android:name="RawLoc">
-    	</activity>
-    	
     	<activity android:name="MyLoc">
     	</activity>
     	
     	<activity android:name="MapLoc">
+    	</activity>
+    	
+    	<activity android:name="RawLoc">
     	</activity>
     	
         <activity android:name="MapPlot">
