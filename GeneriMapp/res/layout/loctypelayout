@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	<Button
+        android:id="@+id/mylocb"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:text="Use My Location" />
+    <Button
+        android:id="@+id/maplocb"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mylocb"
+        android:layout_marginLeft="10dip"
+        android:text="Pick a Map Location" />
+    <Button
+        android:id="@+id/rawlocb"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/maplocb"
+        android:layout_marginLeft="10dip"
+        android:text="Enter Raw Lat/Long" />
+</RelativeLayout>
+       
