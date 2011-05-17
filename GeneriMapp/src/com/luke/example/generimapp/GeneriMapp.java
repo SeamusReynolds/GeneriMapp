@@ -101,7 +101,9 @@ public class GeneriMapp extends Activity{
 		locationManager.removeUpdates(locationListener);
 		radpick.show();
 	}
+	
 	private void plotmyloc(int radius){
+		/*
 		double north = (latitude + ((double)radius * 0.0145)),
 		south = (latitude - ((double)radius * 0.0145)),
 		east = (longitude + ((double)radius * 0.0145)),
@@ -111,13 +113,16 @@ public class GeneriMapp extends Activity{
 			+ Double.toString(south) + "&east="
 			+ Double.toString(east) + "&west="
 			+ Double.toString(west);
+			*/
 		Intent intent = new Intent(this, MapPlot.class);
-		intent.putExtra("PARSE_URL", url);
-		startActivity(intent);
+		intent.putExtra("LAT_VAL", latitude);
+		intent.putExtra("LONG_VAL", longitude);
+		intent.putExtra("RAD_VAL", radius);
+		startActivity(intent); 
 	}
 	
 	private void handleMapLoc(){
-			
+		
 	}
 	
 	private void handleRawLoc(){

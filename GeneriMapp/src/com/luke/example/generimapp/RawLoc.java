@@ -10,11 +10,9 @@ import android.widget.EditText;
 
 public class RawLoc extends Activity{
 	
-	String url;
-	EditText edittextN;
-	EditText edittextS;
-	EditText edittextE;
-	EditText edittextW;
+	EditText edittextLat;
+	EditText edittextLong;
+	EditText edittextRad;
 	
 	private class ButtonHandler implements View.OnClickListener
     {
@@ -30,26 +28,28 @@ public class RawLoc extends Activity{
 	    setContentView(R.layout.rawloclayout);
 	    final Button submit = (Button) findViewById(R.id.button);
 	    submit.setOnClickListener(new ButtonHandler());
-	    edittextN = (EditText) findViewById(R.id.entryN);
-	    edittextS = (EditText) findViewById(R.id.entryS);
-	    edittextE = (EditText) findViewById(R.id.entryE);
-	    edittextW = (EditText) findViewById(R.id.entryW);
-	    edittextN.setText("42.449964");
-	    edittextS.setText("41.550036");
-	    edittextE.setText("-72.104514");
-	    edittextW.setText("-73.605486");
+	    edittextLat = (EditText) findViewById(R.id.entryLat);
+	    edittextLong = (EditText) findViewById(R.id.entryLong);
+	    edittextRad = (EditText) findViewById(R.id.entryRad);
+	    edittextLat.setText("42.009964");
+	    edittextLong.setText("-72.903231");
+	    edittextRad.setText("100");
 	}
 	
 	private void handleButtonClick()
     {
-		url = "http://metpetdb.rpi.edu/metpetweb/searchIPhone.svc?north="
+		/*url = "http://metpetdb.rpi.edu/metpetweb/searchIPhone.svc?north="
 			+ edittextN.getText() + "&south="
 			+ edittextS.getText() + "&east="
 			+ edittextE.getText() + "&west="
 			+ edittextW.getText();
 		//url = "";
+		 * 
+		 */
 		Intent intent = new Intent(getBaseContext(), MapPlot.class);
-		intent.putExtra("PARSE_URL", url);
+		intent.putExtra("LAT_VAL", Double.parseDouble(edittextLat.getText().toString()));
+		intent.putExtra("LONG_VAL", Double.parseDouble(edittextLong.getText().toString()));
+		intent.putExtra("RAD_VAL", Integer.parseInt(edittextRad.getText().toString()));
 		startActivity(intent);
     }
 }

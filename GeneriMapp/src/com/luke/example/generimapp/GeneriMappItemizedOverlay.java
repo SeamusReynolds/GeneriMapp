@@ -2,9 +2,8 @@ package com.luke.example.generimapp;
 
 import java.util.ArrayList;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.widget.Toast;
-
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 
@@ -43,7 +42,12 @@ public class GeneriMappItemizedOverlay extends ItemizedOverlay {
 	@Override
 	protected boolean onTap(int index) {
 	  OverlayItem item = mOverlays.get(index);
-	  Toast.makeText(mContext, "ID:" + item.getTitle() + "\nLat/Long: " + item.getSnippet(), Toast.LENGTH_SHORT).show();
+	  if(item.getTitle() != "MyLocation"){
+		  Intent intent = new Intent(mContext, BlipPage.class);
+		  intent.putExtra("ID", item.getTitle());
+		  intent.putExtra("SNIPPET", item.getSnippet());
+		  mContext.startActivity(intent);
+	  }
 	  return true;
 	}
 	    

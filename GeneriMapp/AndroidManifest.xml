@@ -26,6 +26,9 @@
     	<activity android:name="RawLoc">
     	</activity>
     	
+    	<activity android:name="BlipPage">
+        </activity>
+    	
         <activity android:name="MapPlot">
         </activity>
 

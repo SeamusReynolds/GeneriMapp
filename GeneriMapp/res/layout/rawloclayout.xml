@@ -3,53 +3,42 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <TextView
-        android:id="@+id/labelN"
+        android:id="@+id/labelLat"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Enter north bound..."/>
+        android:text="Enter latitude value..."/>
     <EditText
-        android:id="@+id/entryN"
+        android:id="@+id/entryLat"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelN"/>
+        android:layout_below="@id/labelLat"/>
     <TextView
-        android:id="@+id/labelS"
+        android:id="@+id/labelLong"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/entryN"
-        android:text="Enter south bound..."/>
+        android:layout_below="@id/entryLat"
+        android:text="Enter longitude value..."/>
     <EditText
-        android:id="@+id/entryS"
+        android:id="@+id/entryLong"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelS"/>
+        android:layout_below="@id/labelLong"/>
     <TextView
-        android:id="@+id/labelE"
+        android:id="@+id/labelRad"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/entryS"
-        android:text="Enter east bound..."/>
+        android:layout_below="@id/entryLong"
+        android:text="Enter radius..."/>
     <EditText
-        android:id="@+id/entryE"
+        android:id="@+id/entryRad"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelE"/>
-    <TextView
-        android:id="@+id/labelW"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/entryE"
-        android:text="Enter west bound..."/>
-    <EditText
-        android:id="@+id/entryW"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/labelW"/>
+        android:layout_below="@id/labelRad"/>
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/entryW"
+        android:layout_below="@id/entryRad"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dip"
         android:text="OK" />

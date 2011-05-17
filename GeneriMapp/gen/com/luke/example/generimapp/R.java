@@ -11,30 +11,33 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
-        public static final int logo=0x7f020001;
-        public static final int rock=0x7f020002;
+        public static final int blip=0x7f020000;
+        public static final int icon=0x7f020001;
+        public static final int logo=0x7f020002;
+        public static final int pin=0x7f020003;
+        public static final int rock=0x7f020004;
     }
     public static final class id {
         public static final int button=0x7f05000c;
-        public static final int entryE=0x7f050009;
-        public static final int entryN=0x7f050005;
-        public static final int entryS=0x7f050007;
-        public static final int entryW=0x7f05000b;
-        public static final int labelE=0x7f050008;
-        public static final int labelN=0x7f050004;
-        public static final int labelS=0x7f050006;
-        public static final int labelW=0x7f05000a;
-        public static final int mapView=0x7f050003;
-        public static final int maplocb=0x7f050001;
-        public static final int mylocb=0x7f050000;
-        public static final int rawlocb=0x7f050002;
+        public static final int entryLat=0x7f050007;
+        public static final int entryLong=0x7f050009;
+        public static final int entryRad=0x7f05000b;
+        public static final int labelID=0x7f050000;
+        public static final int labelLat=0x7f050006;
+        public static final int labelLong=0x7f050008;
+        public static final int labelRad=0x7f05000a;
+        public static final int labelSnippet=0x7f050001;
+        public static final int mapView=0x7f050005;
+        public static final int maplocb=0x7f050003;
+        public static final int mylocb=0x7f050002;
+        public static final int rawlocb=0x7f050004;
     }
     public static final class layout {
-        public static final int loctypelayout=0x7f030000;
-        public static final int maplayout=0x7f030001;
-        public static final int maploclayout=0x7f030002;
-        public static final int rawloclayout=0x7f030003;
+        public static final int blippagelayout=0x7f030000;
+        public static final int loctypelayout=0x7f030001;
+        public static final int maplayout=0x7f030002;
+        public static final int maploclayout=0x7f030003;
+        public static final int rawloclayout=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
